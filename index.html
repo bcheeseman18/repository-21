@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <main ng-app="MediaPlayer">
+        <section ng-controller="PlayerController">
+            <h1>Song Player</h1>
+            
+            <ul>
+                <!-- ng-repeat= "newName in arrayName" -->
+                <li ng-repeat="list in songs">
+                <p>Title: <span> {{ list.title }}</span><span> Artist: <span> {{ list.artist }}</span></span>
+                <span> Album: <span> {{ list.album }}</span>
+                <span> Duration: {{ list.durationMin }}:<span> {{ list.durationSec }}</span>
+                <span> {{ list.art }}</span>
+                <button ng-if="!list.playing_now" ng-click="add(list)">Play</button>
+                <button ng-if="list.playing_now" ng-click="stop(list)">Stop</button>
+                </p>
+                </li>
+            </ul>
+
+            <h2>Currently Playing</h2>
+            <ul>
+
+                <li>
+                    <img ng-src="{{ art }}">
+                </li>
+                <li ng-repeat="song in added">
+                    Playing Now: {{ song.title }}
+                </li>
+            </ul>
+
+        </section>
+
+
+
+    </main>
+
+</body>
+
+</html>
